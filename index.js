@@ -12,6 +12,7 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => {
     res.json({msg: "you made a user"})
 })
+app.use('/users', require('./routes/users'))
 
 
 
