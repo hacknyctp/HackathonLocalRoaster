@@ -145,7 +145,7 @@ router.post(
 ); //Note that "/" here refers to the prefix of "api/users" + "/"
 
 //Get a user
-router.get("/user", auth, async (req, res) => {
+router.get("/", auth, async (req, res) => {
   try {
     // console.log(req.body);
     const id = req.id;
