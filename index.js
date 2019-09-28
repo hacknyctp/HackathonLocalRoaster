@@ -1,8 +1,13 @@
 const express = require('express')
 const app = express()
 const connectDB = require('./config/db')
+const cors = require('cors')
 connectDB()//Call and connect to the db
-
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 app.use(express.json({ extended: false })); //Now we can accept body data
 
 //Home page test
@@ -15,11 +20,7 @@ app.post('/', (req, res) => {
 app.use('/users', require('./routes/users'))
 app.use('/roasters', require('./routes/roasters'))
 
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
+
 
 
 
