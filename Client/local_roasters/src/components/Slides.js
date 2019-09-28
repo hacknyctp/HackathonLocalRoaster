@@ -9,3 +9,5 @@ const Slides = ({ location, price, coffee }) => {
         </div>
     )
 }
+
+export default Slides;
