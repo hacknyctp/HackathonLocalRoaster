@@ -13,7 +13,7 @@ app.post('/', (req, res) => {
     res.json({msg: "you made a user"})
 })
 app.use('/users', require('./routes/users'))
-
+app.use('/roasters', require('./routes/roasters'))
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from

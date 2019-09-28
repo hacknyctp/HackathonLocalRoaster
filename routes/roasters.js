@@ -54,13 +54,14 @@ router.post(
   }
 ); //Note that "/" here refers to the prefix of "api/users" + "/"
 
-//Get a roaster
-router.get("/getRoaster", auth, async (req, res) => {
+//Get roasters via location.
+router.get("/getRoasters", async (req, res) => {
     try {
       // console.log(req.body);
       const { location, price } = req.body; //De-structure the request's data// console.log(id.user);
       console.log(location);
-      const roasters = await User.findById(location); 
+
+      const roasters = await Roaster.find(location); 
       console.log(roasters)
       res.json(roasters);
     } catch (err) {
