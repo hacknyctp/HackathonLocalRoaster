@@ -28,6 +28,7 @@ router.post(
       coffee,
       price
     } = req.body;
+    console.log(req.body)
 
     //Check to see if there is a user with that email
     try {
@@ -52,6 +53,9 @@ router.post(
 
       //Use bcrypt for password encryption, returns a promise
       const salt = await bcrypt.genSalt(10); //The salt is needed for encryption
+      if(!password){
+        res.status(400).send("no Password") 
+      }
       user.password = await bcrypt.hash(password, salt); //Gives us a hashed version of the password
       //Save it in the db
       await user.save();
