@@ -27,7 +27,7 @@ router.post(
 
     //Check to see if there is a user with that email
     try {
-      let roaster = await Roast.findOne({
+      let roaster = await Roaster.findOne({
         location
       });
       //Go though the MongoDB and see if the email is already registered
