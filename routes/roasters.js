@@ -25,13 +25,15 @@ router.post(
       price
     } = req.body;
 
-    //Check to see if there is a user with that email
+    //Check to see if the roaster exists
     try {
-      let roaster = await Roaster.findOne({
-        location
+      console.log(location.address)
+      let roaster = await Roaster.find({
+        location:{ address: location.address}
       });
+      console.log(roaster)
       //Go though the MongoDB and see if the email is already registered
-      if (roaster) {
+      if (roaster.length > 0 ) {
         return res.status(400).json({
           msg: "Roaster already exist!"
         });
@@ -45,7 +47,7 @@ router.post(
       });
       //Save it in the db
       await roaster.save();
-      //Payload for jwt
+      res.json(roaster)
     
     } catch (err) {
       console.error(err.message);
