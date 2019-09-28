@@ -19,7 +19,7 @@ export default class Login extends Component {
         axios.post("https://local-roasters-api.herokuapp.com/users/login", {
             email: email,
             password: password
-        }).then(res => localStorage.getItem('key', res.token))
+        }).then(res => localStorage.getItem('token', res.token))
             .catch(error => console.log(error))
     }
 

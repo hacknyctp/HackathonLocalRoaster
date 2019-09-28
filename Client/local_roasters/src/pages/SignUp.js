@@ -36,7 +36,7 @@ export default class Signup extends Component {
                 coffee: 'coffee',
                 price: 4
             })
-                .then(res => console.log(res))
+                .then(res => localStorage.setItem('token', res.token))
                 .catch(error => console.log(error))
         } else {
             alert("The passwords do not match");
