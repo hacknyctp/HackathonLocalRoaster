@@ -4,7 +4,8 @@
   "description": "Local Roasters Caffinates Your Coffee Drinking ",
   "main": "index.js",
   "scripts": {
-    "test": "dev"
+    "test": "dev",
+    "dev":"nodemon index.js"
   },
   "repository": {
     "type": "git",
