@@ -28,12 +28,12 @@ router.post(
     //Check to see if the roaster exists
     try {
       console.log(location.address)
-      let roaster = await Roaster.find({
-        location:{ address: location.address}
-      });
+      let roaster = await Roaster.findOne({
+        "location.address": location.address}
+      );
       console.log(roaster)
       //Go though the MongoDB and see if the email is already registered
-      if (roaster.length > 0 ) {
+      if (roaster) {
         return res.status(400).json({
           msg: "Roaster already exist!"
         });
@@ -62,7 +62,9 @@ router.get("/getRoasters", async (req, res) => {
       // console.log(req.body);
       const { location, price } = req.body; //De-structure the request's data// console.log(id.user);
       console.log(location);
-
+      if(location){
+        
+      }
       const roasters = await Roaster.find(location); 
       console.log(roasters)
       res.json(roasters);
