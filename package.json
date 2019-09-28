@@ -19,5 +19,11 @@
   "bugs": {
     "url": "https://github.com/hacknyctp/LocalRoastersHack/issues"
   },
-  "homepage": "https://github.com/hacknyctp/LocalRoastersHack#readme"
+  "homepage": "https://github.com/hacknyctp/LocalRoastersHack#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.2"
+  }
 }
