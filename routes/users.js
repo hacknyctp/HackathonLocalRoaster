@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const config = require("config");
 // const zipcodes = require("zipcodes");
-// const auth = require("../middleware/requireAuth");
+const auth = require("../middleware/requireAuth");
 // const fetch = require("node-fetch");
 const router = express.Router();
 const User = require("../models/User");
@@ -143,5 +143,21 @@ router.post(
     }
   }
 ); //Note that "/" here refers to the prefix of "api/users" + "/"
+
+//Get a user
+router.get("/user", auth, async (req, res) => {
+  try {
+    // console.log(req.body);
+    const id = req.id;
+    // console.log(id.user);
+    console.log(req.id);
+    const user = await User.findById(id).select("-password"); // Return all but the PW
+    res.json(user);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
 
 module.exports = router;
