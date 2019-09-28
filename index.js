@@ -15,6 +15,13 @@ app.post('/', (req, res) => {
 app.use('/users', require('./routes/users'))
 
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+
+
 
 // app.get('/', (req, res) => {
 //     res.json({id: req.params.id})
