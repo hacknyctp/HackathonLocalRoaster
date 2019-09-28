@@ -1,6 +1,9 @@
 language: node_js
 node_js:
   - stable
+script:
+  - cd Client
+  - cd local_roasters
 deploy:
   provider: heroku
   api_key:
