@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Slides from "../components/Slides"
-import "DashBoard.css";
+import axios from 'axios';
+import "../styles/DashBoard.css";
 
 
 export default class DashBoard extends Component {
@@ -17,13 +18,14 @@ export default class DashBoard extends Component {
 
     //this is going to get the user data from the database
     componentDidMount() {
-        fetch("")
-            .then((res) => res.json())
+        axios("https://local-roasters-api.herokuapp.com/users")
             .then((res) => this.setState({
-                typeOfCoffee: res.coffeeType,
+                typeOfCoffee: res.coffee,
+                price: res.price,
                 location: res.location, price: res.price,
                 recomendations: res.recomendations
             }))
+            .then(() => console.log(this.state))
             .catch((error) => alert("Something went wrong with getting your data..."));
     }
 
