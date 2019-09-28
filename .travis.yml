@@ -8,3 +8,4 @@ deploy:
   app: local-roasters-api
   on:
     repo: hacknyctp/LocalRoastersHack
+    branch: frontend
