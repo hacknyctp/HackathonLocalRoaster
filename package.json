@@ -4,10 +4,9 @@
   "description": "Local Roasters Caffinates Your Coffee Drinking ",
   "main": "index.js",
   "scripts": {
-    "test": "dev",
-    "dev":"nodemon index.js",
     "test": "",
-  "start": "node  index.js"
+    "dev": "nodemon index.js",
+    "start": "node  index.js"
   },
   "repository": {
     "type": "git",
@@ -24,7 +23,9 @@
   },
   "homepage": "https://github.com/hacknyctp/LocalRoastersHack#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "bcrypt": "^3.0.6",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.1"
   },
   "devDependencies": {
     "nodemon": "^1.19.2"
