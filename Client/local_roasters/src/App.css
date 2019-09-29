@@ -20,6 +20,12 @@
 .App-link {
   color: #09d3ac;
 }
+body {
+  color: #7e583f;
+}
+.container-fluid {
+  padding-left: 0px;
+}
 
 .btn-group-price {
   margin: 0.3rem 0.3rem;
