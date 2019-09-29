@@ -1,10 +1,11 @@
 const express = require("express");
 const app = express();
 const connectDB = require("./config/db");
-const cors = require("cors");
 connectDB(); //Call and connect to the db
+
+//Allow control origin, then call next middleware
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept, x-auth-token"
@@ -13,24 +14,19 @@ app.use(function(req, res, next) {
     "Access-Control-Allow-Methods",
     "GET,PUT,POST,DELETE,PATCH,OPTIONS"
   );
-
   next();
 });
-app.use(express.json({ extended: false })); //Now we can accept body data
+//Allows us to accept body data
+app.use(express.json({ extended: false }));
 
-//Home page test
-app.get("/", (req, res) => {
-  res.json({ msg: "hello from the backend" });
-});
-app.post("/", (req, res) => {
-  res.json({ msg: "you made a user" });
-});
+//Bring in other middleware to use
 app.use("/users", require("./routes/users"));
 app.use("/roasters", require("./routes/roasters"));
 
-// app.get('/', (req, res) => {
-//     res.json({id: req.params.id})
-// })
+//Home page test
+app.get("/", (req, res) => {
+  res.json({ msg: "Hello from the backend" });
+});
 
 const PORT = process.env.PORT || 5000;
 

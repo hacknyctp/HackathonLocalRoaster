@@ -3,24 +3,14 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const config = require("config");
-// const zipcodes = require("zipcodes");
 const auth = require("../middleware/requireAuth");
-// const fetch = require("node-fetch");
 const router = express.Router();
 const User = require("../models/User");
 
-//Grab env vars
-// const API_KEY = process.env.OWM || config.get("DARK");
-
-//Registering user --> Use a put req ---> CREAT (C)RUD
-// @ route      POST api/users
-// @desc        Register a user
-// @access      Public
+//Registering user
 router.post("/signup", async (req, res) => {
-  //Pull out the data
+  //Pull out the data from the request body
   const { email, password, location, coffee, price } = req.body;
-  console.log(req.body);
-
   //Check to see if there is a user with that email
   try {
     let user = await User.findOne({
@@ -33,7 +23,7 @@ router.post("/signup", async (req, res) => {
       });
     }
 
-    //If the email is not already in use...
+    //If the email is not already in use make the user
     user = new User({
       email,
       password,
@@ -48,15 +38,16 @@ router.post("/signup", async (req, res) => {
       res.status(400).send("no Password");
     }
     user.password = await bcrypt.hash(password, salt); //Gives us a hashed version of the password
+
     //Save it in the db
     await user.save();
+
     //Payload for jwt
     const payload = {
       user: {
         id: user.id
       }
     };
-
     //jwt takes: Sign, payload, options, and a call back
     //When it expires they'll have to log back in
     jwt.sign(
@@ -78,13 +69,10 @@ router.post("/signup", async (req, res) => {
   }
 }); //Note that "/" here refers to the prefix of "api/users" + "/"
 
-//SIGN IN ENDPOINT
+//Sign in Endpoint
 router.post("/login", async (req, res) => {
-  //This is from express-validator and returns the errors from the checks given the request
-
-  //If no errors were found(meaning we got a email and pw)
-  const { email, password } = req.body; //De-structure the request's data
-
+  //Pull out the email and password
+  const { email, password } = req.body;
   //See if it's valid and see if we can hash it and login
   try {
     //Use the User model's method findOne to check if the email is actually registered
@@ -93,7 +81,7 @@ router.post("/login", async (req, res) => {
     });
     if (!user) {
       return res.status(400).json({
-        msg: "Email  is not registered."
+        msg: "Email is not registered."
       });
     }
 
@@ -134,10 +122,7 @@ router.post("/login", async (req, res) => {
 //Get a user
 router.get("/", auth, async (req, res) => {
   try {
-    // console.log(req.body);
     const id = req.id;
-    // console.log(id.user);
-    console.log(req.id);
     const user = await User.findById(id).select("-password"); // Return all but the PW
     res.json(user);
   } catch (err) {
