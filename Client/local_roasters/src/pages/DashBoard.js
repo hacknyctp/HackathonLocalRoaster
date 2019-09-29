@@ -74,7 +74,8 @@ export default class DashBoard extends Component {
                 axios("https://local-roasters-api.herokuapp.com/roasters/getRoasters", {
                     params: {
                         zipcode: 11214
-                    }
+                    },
+                    headers: { 'x-auth-token': localStorage.getItem("token") }
                 })
                     .then(res => this.setState({ recomendations: [...res.data] }))
                     .catch(err => console.log("error " + err))
@@ -84,37 +85,48 @@ export default class DashBoard extends Component {
 
     }
 
+    logout = () => {
+        localStorage.clear();
+        this.props.history.push("/login");
+    }
+
 
     render() {
         const { typeOfCoffee, location, price, recomendations, slideIndex } = this.state;
         const currentPlace = recomendations[slideIndex];
         return (
-
-            <Swipeable
-                trackMouse
-                preventDefaultTouchmoveEvent
-                onSwipedLeft={() => this.onSwiped(LEFT)}
-                onSwipedRight={() => this.onSwiped(RIGHT)}
-            >
-                <h2 className="m-5">{typeOfCoffee} coffee in {location} with prices up to ${price}</h2>
-                <div className="d-flex" style={{ maxWidth: "100%", position: "abosulte" }}>
-
-                    <button onClick={() => this.onSwiped(RIGHT)} style={buttonLeft}>
-                        ⇦
-                    </button>
-                    <Slides
-                        price={currentPlace.price}
-                        coffee={currentPlace.coffee}
-                        name={currentPlace.name}
-                        address={currentPlace.location.address}
-                        img={currentPlace.img}
-                    />
-                    <button onClick={() => this.onSwiped(LEFT)} style={buttonRight}>
-                        ⇨
-                    </button>
+            <div>
+                <div className="jumbotron">
+                    <img className="logout" src={require("../assets/logout.svg")} onClick={this.logout} />
+                    <br />
+                    <h3><i className="fas fa-mug-hot"></i> Local Roasters</h3>
                 </div>
+                <Swipeable
+                    trackMouse
+                    preventDefaultTouchmoveEvent
+                    onSwipedLeft={() => this.onSwiped(LEFT)}
+                    onSwipedRight={() => this.onSwiped(RIGHT)}
+                >
+                    <h2 className="m-1">{typeOfCoffee} coffee in {location} with prices up to ${price}</h2>
+                    <div className="d-flex" style={{ maxWidth: "100%", position: "abosulte" }}>
 
-            </Swipeable >
+                        <button onClick={() => this.onSwiped(RIGHT)} style={buttonLeft}>
+                            ⇦
+                    </button>
+                        <Slides
+                            price={currentPlace.price}
+                            coffee={currentPlace.coffee}
+                            name={currentPlace.name}
+                            address={currentPlace.location.address}
+                            img={currentPlace.img}
+                        />
+                        <button onClick={() => this.onSwiped(LEFT)} style={buttonRight}>
+                            ⇨
+                    </button>
+                    </div>
+
+                </Swipeable >
+            </div>
 
         )
     }

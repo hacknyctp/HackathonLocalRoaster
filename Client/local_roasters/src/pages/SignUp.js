@@ -53,11 +53,9 @@ export default class Signup extends Component {
 
     render() {
         return (
-            <div className="container-fluid">
+            <div className="container-fluid backgroundImg">
                 <div className="jumbotron">
-                    <h3>
-                        <i className="fas fa-mug-hot"></i> Local Roasters
-          </h3>
+                    <h3><i className="fas fa-mug-hot"></i> Local Roasters</h3>
                     <hr class="my-3"></hr>
                     <p>Where are you getting your Coffee ? </p>
                 </div>
@@ -116,7 +114,7 @@ export default class Signup extends Component {
                             onClick={this.submitHandler}
                         />
                     </div>
-                    <button className="btn btn-secondary" onClick={() => this.props.history.push("/login")}> Login </button>
+                    <button className="btn btn-secondary" onClick={() => this.props.history.push("/login")}> Log in </button>
                 </div>
             </div>
         );
