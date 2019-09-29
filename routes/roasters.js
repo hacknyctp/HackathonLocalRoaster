@@ -61,8 +61,8 @@ router.post(
 //Get roasters via location.
 router.get("/getRoasters", async (req, res) => {
     try {
-      // console.log(req.body);
-      const { zipcode } = req.body; //De-structure the request's data// 
+      console.log(req.query);
+      const { zipcode } =  req.query; //De-structure the request's data// 
       console.log(zipcode);
   
       let roasters = await Roaster.find({
