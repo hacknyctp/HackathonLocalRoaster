@@ -32,7 +32,7 @@ const Splash = () => {
             className="btn btn-lg btn-primary coffee-items"
             type="button"
             name="coffee"
-            value="light"
+            value="Light"
             onClick={onChange}
           />
         </div>
@@ -41,7 +41,7 @@ const Splash = () => {
             className="btn btn-lg btn-primary coffee-items"
             type="button"
             name="coffee"
-            value="medium"
+            value="Medium"
             onClick={onChange}
           />
         </div>
@@ -50,14 +50,14 @@ const Splash = () => {
             className="btn btn-lg btn-primary coffee-items"
             type="button"
             name="coffee"
-            value="strong"
+            value="Dark"
             onClick={onChange}
           />
         </div>
       </div>
       <br />
       <div>
-        <Link to="/price">Continue</Link>
+        <Link to="/price">Let's caffeinate</Link>
       </div>
     </div>
   );
