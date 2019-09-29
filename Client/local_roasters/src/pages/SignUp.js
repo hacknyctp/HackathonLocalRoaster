@@ -26,8 +26,6 @@ export default class Signup extends Component {
         //this sends the information to the sign up api
         const { location, email, password, retype } = this.state;
 
-
-
         if (password === retype) {
             axios.post("https://local-roasters-api.herokuapp.com/users/signup", {
                 email: email,

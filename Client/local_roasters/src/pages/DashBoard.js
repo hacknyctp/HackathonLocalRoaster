@@ -63,15 +63,26 @@ export default class DashBoard extends Component {
                 price: res.data.price,
                 location: res.data.location,
                 price: res.data.price
-                // recomendations: res.recomendations
             }))
+            .then(() => {
+                //second api call to get the locations
+                axios("https://local-roasters-api.herokuapp.com/roasters/getRoasters", {
+                    params: {
+                        zipcode: 11214
+                    }
+                })
+                    .then(res => this.setState({ recomendations: [...res.data] }))
+                    .catch(err => console.log("error " + err))
+            })
             .catch((error) => alert("Something went wrong with getting your data..."));
+
+
     }
 
 
     render() {
         const { typeOfCoffee, location, price, recomendations, slideIndex } = this.state;
-        // const currentPlace = recomendations[slideIndex];
+        const currentPlace = recomendations[slideIndex];
         return (
 
             <Swipeable
@@ -79,7 +90,6 @@ export default class DashBoard extends Component {
                 preventDefaultTouchmoveEvent
                 onSwipedLeft={() => this.onSwiped(LEFT)}
                 onSwipedRight={() => this.onSwiped(RIGHT)}
-            // style={{ width: IMG_WIDTH }}
             >
                 <div>
                     <h2>{typeOfCoffee} coffee in {location} with in ${price}</h2>
@@ -88,8 +98,9 @@ export default class DashBoard extends Component {
                     </button>
                     <Slides
                         location={location}
-                        price={price}
-                        coffee={typeOfCoffee}
+                        price={currentPlace.price}
+                        coffee={currentPlace.coffee}
+                        name={currentPlace.name}
                     />
                     <button onClick={() => this.onSwiped(LEFT)} style={buttonRight}>
                         ⇨
