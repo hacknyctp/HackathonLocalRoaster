@@ -1,27 +1,25 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const roasterSchema = mongoose.Schema({
-      name:{
-        type:String,
-        required: true
-      },
-      location: {
-        zipcode: Number,
-        address: String,
-      },
-      coffee: {
-        type: String,
-        required: true
-      },
-      price: {
-        type: Number,
-        required: true
-      },
-      img:{
-        type:String,
-        
-      }
-})
+  name: {
+    type: String,
+    required: true
+  },
+  location: {
+    zipcode: Number,
+    address: String
+  },
+  coffee: {
+    type: String,
+    required: true
+  },
+  price: {
+    type: Number,
+    required: true
+  },
+  img: {
+    type: String
+  }
+});
 
-
-module.exports = mongoose.model('roaster', roasterSchema)
+module.exports = mongoose.model("roaster", roasterSchema);
