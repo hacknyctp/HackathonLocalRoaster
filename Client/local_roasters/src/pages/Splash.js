@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 const Splash = () => {
   const [coffee, setCoffeeType] = useState('');
   const onChange = e => {
-    //setCoffeeType(e.target.value);
     sessionStorage.setItem(e.target.name, e.target.value);
-    alert('on change');
   };
   return (
     <div className='container-fluid'>
@@ -13,44 +11,38 @@ const Splash = () => {
         <h3>Local Rosters</h3>
         <p>We care about your coffee and maximum price...</p>
       </div>
-      What's your type of coffee ? <br />
-      <div
-        class='btn-group-vertical'
-        role='group'
-        aria-label='Basic example'
-        name='coffee'
-        value='light'
-      >
-        <button
-          type='button'
-          class='btn btn-primary'
-          type='button'
-          onClick={onChange}
-        >
-          Light
-        </button>
-        <br />
-        <button type='button' class='btn btn-primary'>
-          Medium
-        </button>
-        <br />
-        <button type='button' class='btn btn-primary'>
-          Strong
-        </button>
-      </div>
-      {/* <div className='btn btn-secondary'>
+      What is your type of food?
+      <br />
+      <div className='btn-group btn-group-price' role='group'>
+        <div className='btn-group-item'>
           <input
-            className='form-check-input'
+            className='btn btn-lg btn-primary'
+            type='button'
+            name='coffee'
+            value='light'
+            onClick={onChange}
+          />
+        </div>
+        <div className='btn-group-item'>
+          <input
+            className='btn btn-lg btn-primary'
+            type='button'
+            name='coffee'
+            value='medium'
+            onClick={onChange}
+          />
+        </div>
+        <div className='btn-group-item'>
+          <input
+            className='btn btn-lg btn-primary'
             type='button'
             name='coffee'
             value='strong'
-            onChange={onChange}
+            onClick={onChange}
           />
-          <label className='form-check-label' for='exampleRadios1'>
-            Strong
-          </label> 
-
-  </div>*/}
+        </div>
+      </div>
+      <br />
       <div>
         <Link to='/price'>Continue</Link>
       </div>
