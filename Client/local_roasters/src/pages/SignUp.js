@@ -33,10 +33,11 @@ export default class Signup extends Component {
                 email: email,
                 password: password,
                 location: location,
-                coffee: 'coffee',
-                price: 4
+                coffee: sessionStorage.getItem('coffee'),
+                price: sessionStorage.getItem('price'),
             })
-                .then(res => console.log(res))
+                .then(res => localStorage.setItem('token', res.data.token))
+                .then(() => this.props.history.push("/dashboard"))
                 .catch(error => console.log(error))
         } else {
             alert("The passwords do not match");

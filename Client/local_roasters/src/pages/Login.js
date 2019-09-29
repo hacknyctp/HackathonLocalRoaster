@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 
 export default class Login extends Component {
@@ -7,7 +8,8 @@ export default class Login extends Component {
         super(props);
         this.state = {
             email: "",
-            password: ""
+            password: "",
+            success: false
         }
     }
 
@@ -17,9 +19,13 @@ export default class Login extends Component {
 
     submit = () => {
         axios.post("https://local-roasters-api.herokuapp.com/users/login", {
-            email: email,
-            password: password
-        }).then(res => localStorage.getItem('key', res.token))
+            email: this.state.email,
+            password: this.state.password
+        }).then(res => {
+            localStorage.setItem('token', res.data.token);
+            console.log(localStorage.getItem('token'))
+            this.props.history.push("/dashboard");
+        })
             .catch(error => console.log(error))
     }
 
