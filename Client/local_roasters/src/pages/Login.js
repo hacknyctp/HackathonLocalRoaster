@@ -46,8 +46,9 @@ export default class Login extends Component {
                 <div className="inputs">
                     <input className="m-2 form-control" type="text" value={email} id="email" placeholder="email" onChange={(e) => this.textHandler(e)} required />
                     <input className="m-2 form-control" type="password" value={password} id="password" placeholder="password" onChange={(e) => this.textHandler(e)} required />
-                    <input className="m-2 btn btn-success" type="submit" value="submit" onClick={this.submit} />
+                    <input className="m-2 p-2 btn btn-success" type="submit" value="submit" onClick={this.submit} />
                 </div>
+                <button className="btn btn-secondary" onClick={() => this.props.history.push("/signup")}> Sign Up </button>
             </div>
         )
     }

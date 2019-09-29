@@ -1,0 +1,8 @@
+.img {
+    width: 15%;
+    margin-right: 2%;
+}
+
+.img:active {
+    background: url("../assets/coffee-grain-fill.svg");
+}

@@ -1,0 +1,13 @@
+.logout:hover {
+    transform: scale(1.5);
+}
+
+.logout:active {
+    transform: scale(.5);
+}
+
+.logout {
+    transition: all .5s;
+    width: 8%;
+    float: left;
+}
