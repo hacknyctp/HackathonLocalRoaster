@@ -3,8 +3,18 @@ import { Link } from 'react-router-dom';
 const Splash = () => {
   const [coffee, setCoffeeType] = useState('');
   const onChange = e => {
+    //setPrice(e.target.value);
+    let node = document.getElementsByClassName('coffee-items');
+
+    for (let i = 0; i < node.length; i++) {
+      node[i].className = 'bbtn btn-lg btn-primary coffee-items';
+    }
+
+    e.target.className = 'btn btn-lg btn-success coffee-items';
+
     sessionStorage.setItem(e.target.name, e.target.value);
   };
+
   return (
     <div className='container-fluid'>
       <div className='jumbotron'>
@@ -16,7 +26,7 @@ const Splash = () => {
       <div className='btn-group btn-group-price' role='group'>
         <div className='btn-group-item'>
           <input
-            className='btn btn-lg btn-primary'
+            className='btn btn-lg btn-primary coffee-items'
             type='button'
             name='coffee'
             value='light'
@@ -25,7 +35,7 @@ const Splash = () => {
         </div>
         <div className='btn-group-item'>
           <input
-            className='btn btn-lg btn-primary'
+            className='btn btn-lg btn-primary coffee-items'
             type='button'
             name='coffee'
             value='medium'
@@ -34,7 +44,7 @@ const Splash = () => {
         </div>
         <div className='btn-group-item'>
           <input
-            className='btn btn-lg btn-primary'
+            className='btn btn-lg btn-primary coffee-items'
             type='button'
             name='coffee'
             value='strong'

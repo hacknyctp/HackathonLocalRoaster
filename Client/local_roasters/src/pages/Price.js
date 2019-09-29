@@ -4,6 +4,14 @@ const Price = () => {
   const [price, setPrice] = useState('');
   const onChange = e => {
     //setPrice(e.target.value);
+    let node = document.getElementsByClassName('btn-group-items');
+
+    for (let i = 0; i < node.length; i++) {
+      node[i].className = 'btn btn-lg btn-primary btn-group-items';
+    }
+
+    e.target.className = 'btn btn-lg btn-success btn-group-items';
+
     sessionStorage.setItem(e.target.name, e.target.value);
   };
   return (
@@ -17,28 +25,28 @@ const Price = () => {
       <div className='btn-group btn-group-price' role='group'>
         <div className='btn-group-item'>
           <input
-            className='btn btn-lg btn-primary'
+            className='btn btn-lg btn-primary btn-group-items'
             type='button'
             name='price'
-            value='1'
+            value='$1'
             onClick={onChange}
           />
         </div>
         <div className='btn-group-item'>
           <input
-            className='btn btn-lg btn-primary'
+            className='btn btn-lg btn-primary btn-group-items'
             type='button'
             name='price'
-            value='2'
+            value='$2'
             onClick={onChange}
           />
         </div>
         <div className='btn-group-item'>
           <input
-            className='btn btn-lg btn-primary'
+            className='btn btn-lg btn-primary btn-group-items'
             type='button'
             name='price'
-            value='3'
+            value='$3'
             onClick={onChange}
           />
         </div>
@@ -47,31 +55,34 @@ const Price = () => {
       <div className='btn-group btn-group-price' role='group'>
         <div className='btn-group-item'>
           <input
-            className='btn btn-lg btn-primary'
+            className='btn btn-lg btn-primary btn-group-items'
             type='button'
             name='price'
-            value='4'
+            value='$4'
             onClick={onChange}
           />
         </div>
         <div className='btn-group-item'>
           <input
-            className='btn btn-lg btn-primary'
+            className='btn btn-lg btn-primary btn-group-items'
             type='button'
             name='price'
-            value='5'
+            value='$5'
             onClick={onChange}
           />
         </div>
         <div className='btn-group-item'>
           <input
-            className='btn btn-lg btn-primary'
+            className='btn btn-lg btn-primary btn-group-items'
             type='button'
             name='price'
-            value='6'
+            value='$6'
             onClick={onChange}
           />
         </div>
+      </div>
+      <div>
+        <Link to='/signup'>Continue</Link>
       </div>
     </div>
   );
