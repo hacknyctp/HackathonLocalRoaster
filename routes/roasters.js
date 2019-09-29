@@ -29,7 +29,7 @@ router.post(
     //Check to see if the roaster exists
     try {
       console.log(location.address)
-      let roaster = await Roaster.find({
+      let roaster = await Roaster.findOne({
         "location.address": location.address}
       );
       console.log(roaster)
