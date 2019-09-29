@@ -20,6 +20,7 @@ router.post(
     
     //Pull out the roaster
     const {
+      name,
       location,
       coffee,
       price
@@ -28,7 +29,7 @@ router.post(
     //Check to see if the roaster exists
     try {
       console.log(location.address)
-      let roaster = await Roaster.findOne({
+      let roaster = await Roaster.find({
         "location.address": location.address}
       );
       console.log(roaster)
@@ -41,6 +42,7 @@ router.post(
 
       //If the roaster is not already in use...
       roaster = new Roaster({
+      name,
       location,
       coffee,
       price
@@ -60,12 +62,12 @@ router.post(
 router.get("/getRoasters", async (req, res) => {
     try {
       // console.log(req.body);
-      const { zipcode } = req.body; //De-structure the request's data// console.log(id.user);
-      // console.log(location);
+      const { zipcode } = req.body; //De-structure the request's data// 
+      console.log(zipcode);
   
-      let roasters = await Roaster.findOne({
+      let roasters = await Roaster.find({
           "location.zipcode": zipcode})
-      
+      console.log(roasters)
     if(!zipcode){
         return res.status(400).json({
           msg: "Did not send a zipcode!"

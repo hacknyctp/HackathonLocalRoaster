@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const roasterSchema = mongoose.Schema({
+      name:{
+        type:String,
+        required: true
+      },
       location: {
         zipcode: Number,
         address: String,
