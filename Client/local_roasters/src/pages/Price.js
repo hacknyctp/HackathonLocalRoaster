@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-const Price = () => {
-  const [price, setPrice] = useState('');
+
+const Price = props => {
+  let [price, setPrice] = useState('');
+  let signin = '';
+  let isPicked = false;
   const onChange = e => {
     //setPrice(e.target.value);
+    isPicked = true;
     let node = document.getElementsByClassName('btn-group-items');
 
     for (let i = 0; i < node.length; i++) {
@@ -13,7 +17,17 @@ const Price = () => {
     e.target.className = 'btn btn-lg btn-success btn-group-items';
 
     sessionStorage.setItem(e.target.name, e.target.value);
+    setPrice(e.target.value);
   };
+
+  const onClickLink = e => {
+    if (price === '') {
+      alert('Pick a Price !!');
+    } else {
+      props.history.push('/signup');
+    }
+  };
+
   return (
     <div className='container-fluid'>
       <div className='jumbotron'>
@@ -85,10 +99,8 @@ const Price = () => {
         </div>
       </div>
       <br />
-      <div className='btn btn-success'>
-        <Link className='links' to='/signup'>
-          Continue
-        </Link>
+      <div className='btn btn-success' onClick={onClickLink}>
+        Continue
       </div>
       <br />
       <div>
