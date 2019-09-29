@@ -84,7 +84,8 @@ const Price = () => {
           />
         </div>
       </div>
-      <div>
+      <br />
+      <div className='btn btn-success'>
         <Link className='links' to='/signup'>
           Continue
         </Link>
@@ -92,7 +93,7 @@ const Price = () => {
       <br />
       <div>
         <Link className='links' to='/login'>
-          <span className='links-small'>Already Sign Up? |</span> Log InLog In
+          <span className='links-small'>Already Sign Up? |</span> Log In
         </Link>
       </div>
     </div>

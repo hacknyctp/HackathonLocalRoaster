@@ -109,7 +109,8 @@ export default class DashBoard extends Component {
                 onSwipedRight={() => this.onSwiped(RIGHT)}
             >
                 <h2 className="m-5">
-                    {typeOfCoffee} coffee in {location} with prices up to ${price}
+                    {typeOfCoffee.substring(0, 1).toUpperCase()}
+                    {typeOfCoffee.substring(1)} coffee within ${price} near {location}
                 </h2>
                 <div
                     className="d-flex"
