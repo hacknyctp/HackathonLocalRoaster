@@ -28,8 +28,8 @@
     display: none;
 }
 
-.dashHero {
-    /* d */
+.jumbotron {
+    margin-bottom: 0;
 }
 
 @media only screen and (min-width: 900px) {
@@ -43,5 +43,8 @@
         position: relative;
         top: 70;
         display: block;
+    }
+    .logout {
+        width: 2% !important;
     }
 }

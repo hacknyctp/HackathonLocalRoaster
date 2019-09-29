@@ -115,17 +115,14 @@ export default class DashBoard extends Component {
                     onSwipedLeft={() => this.onSwiped(LEFT)}
                     onSwipedRight={() => this.onSwiped(RIGHT)}
                 >
-                    <h2 className="m-5">
-                        {typeOfCoffee.substring(0, 1).toUpperCase()}
-                        {typeOfCoffee.substring(1)} coffee within ${price} near {location}
-                    </h2>
+
                     <div
                         className="d-flex card"
                         style={{ maxWidth: "100%", position: "abosulte" }}
                     >
                         <button onClick={() => this.onSwiped(RIGHT)} className="buttonStyle" style={buttonLeft}>
                             ⇦
-          </button>
+                        </button>
                         <Slides
                             price={currentPlace.price}
                             coffee={currentPlace.coffee}
@@ -139,7 +136,7 @@ export default class DashBoard extends Component {
           </button>
                     </div>
                 </Swipeable>
-            </div>
+            </div >
         );
     }
 }
