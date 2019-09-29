@@ -3,13 +3,12 @@ import "../styles/Slides.css"
 
 
 const Slides = ({ price, coffee, name, img, address, beans }) => {
-    for (let i = 0; i < 4; i++) {
-
-    }
 
     return (
         <div className="e-flex align-items-center justify-content border m-3 p-3" style={{ width: "100%" }}>
-            <h1> {name} </h1>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+                ⇦ <h1 style={{ margin: "0 30px" }}> {name} </h1> ⇨
+            </div>
             <hr />
             <div style={{ padding: "0 100px" }}>
                 <img className="img-fluid rounded mt-3 mb-3" src={img} />

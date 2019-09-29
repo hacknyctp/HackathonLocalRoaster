@@ -28,6 +28,10 @@
     display: none;
 }
 
+.dashHero {
+    /* d */
+}
+
 @media only screen and (min-width: 900px) {
     .card {
         padding: 0 20%;
