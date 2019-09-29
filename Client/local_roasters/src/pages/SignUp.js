@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "../styles/SignUp.css";
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 export default class Signup extends Component {
@@ -58,7 +59,7 @@ export default class Signup extends Component {
             <i className="fas fa-mug-hot"></i> Local Roasters
           </h3>
           <hr class="my-3"></hr>
-          <p>Just three more things to get your coffee started... </p>
+          <p>Where are you getting your Coffee ? </p>
         </div>
 
         <div className="signUp align-items-center">
@@ -68,7 +69,7 @@ export default class Signup extends Component {
               id="location"
               type="numeric"
               value={this.state.location}
-              placeholder="Zip Code ie 11214"
+              placeholder="zip code"
               onChange={event => this.formHandler(event)}
               required
             />
@@ -80,7 +81,7 @@ export default class Signup extends Component {
               id="email"
               type="text"
               value={this.state.email}
-              placeholder="Email@example.com"
+              placeholder="email"
               onChange={event => this.formHandler(event)}
               required
             />
@@ -115,6 +116,12 @@ export default class Signup extends Component {
               onClick={this.submitHandler}
             />
           </div>
+          <button
+            className="btn btn-secondary"
+            onClick={() => this.props.history.push("/login")}
+          >
+            Login
+          </button>
         </div>
       </div>
     );
