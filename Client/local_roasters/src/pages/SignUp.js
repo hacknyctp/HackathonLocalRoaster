@@ -18,8 +18,9 @@ export default class Signup extends Component {
     console.log(this.state[e.target.id]);
     this.setState({ [e.target.id]: e.target.value });
   };
-
   submitHandler = () => {
+    sessionStorage.setItem('price', 4);
+    sessionStorage.setItem('coffee', 'black');
     //this sends the information to the sign up api
     const { location, email, password, retype } = this.state;
 
