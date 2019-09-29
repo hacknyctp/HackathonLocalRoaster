@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Slides from "../components/Slides";
 import { Swipeable } from "react-swipeable";
 import axios from "axios";
@@ -8,7 +9,6 @@ const RIGHT = "-1";
 const LEFT = "+1";
 const IMG_WIDTH = "342px";
 const IMG_HEIGHT = "249px";
-
 
 const buttonLeft = { float: "left" };
 const buttonRight = { float: "right" };
@@ -83,7 +83,7 @@ export default class DashBoard extends Component {
     logout = () => {
         localStorage.clear();
         this.props.history.push("/");
-    }
+    };
 
     render() {
         const {
@@ -102,6 +102,7 @@ export default class DashBoard extends Component {
                         <div className="jumbotron" style={{ marginTop: "-5px" }}>
                             <img className="logout" src={require("../assets/logout.svg")} onClick={this.logout} />
                             <br />
+                            <Link to="/preferences">preferences</Link>
                             <h3>
                                 <i className="fas fa-mug-hot"></i> Local Roasters
                         </h3>
