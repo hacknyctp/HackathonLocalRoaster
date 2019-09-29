@@ -24,22 +24,27 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Acme', sans-serif;
+  font-family: "Acme", sans-serif;
 }
 
 .container-fluid {
   padding: 0;
 }
 
+.jumbotron {
+  margin-bottom: 10px;
+}
 .App-link {
   color: #09d3ac;
 }
+
 body {
-  font-family: 'Acme', sans-serif;
+  font-family: "Acme", sans-serif;
   color: #7e583f;
 }
 
 /* Splash  */
+
 .container-fluid {
   padding-left: 0px;
 }
@@ -58,5 +63,5 @@ body {
 }
 
 .links-small {
-  font-size: 0.8rem;
+  font-size: 1rem;
 }

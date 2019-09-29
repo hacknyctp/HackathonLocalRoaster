@@ -65,11 +65,6 @@ const Splash = props => {
         </div>
       </div>
       <br />
-      {/* <div className='btn btn-success'>
-        <Link className='links' to='/price'>
-          Let's caffeinate
-        </Link>
-      </div> */}
       <div className='btn btn-success' onClick={onClickLink}>
         Let's caffeinate
       </div>

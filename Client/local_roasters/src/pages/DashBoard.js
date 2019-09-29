@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Slides from "../components/Slides";
 import { Swipeable } from "react-swipeable";
 import axios from "axios";
@@ -9,21 +10,8 @@ const LEFT = "+1";
 const IMG_WIDTH = "342px";
 const IMG_HEIGHT = "249px";
 
-const buttonStyles = {
-    height: "10%",
-    color: "#eeeeee",
-    fontSize: "2em",
-    backgroundColor: "rgba(230,230,230,.2)",
-    border: "0",
-    borderRadius: "50%",
-    cursor: "pointer",
-    position: "relative",
-    top: 70,
-    display: "none"
-};
-
-const buttonLeft = { ...buttonStyles, float: "left" };
-const buttonRight = { ...buttonStyles, float: "right" };
+const buttonLeft = { float: "left" };
+const buttonRight = { float: "right" };
 
 export default class DashBoard extends Component {
     constructor(props) {
@@ -92,6 +80,11 @@ export default class DashBoard extends Component {
             });
     }
 
+    logout = () => {
+        localStorage.clear();
+        this.props.history.push("/");
+    };
+
     render() {
         const {
       typeOfCoffee,
@@ -99,38 +92,51 @@ export default class DashBoard extends Component {
             price,
             recomendations,
             slideIndex
-    } = this.state;
+            } = this.state;
         const currentPlace = recomendations[slideIndex];
         return (
-            <Swipeable
-                trackMouse
-                preventDefaultTouchmoveEvent
-                onSwipedLeft={() => this.onSwiped(LEFT)}
-                onSwipedRight={() => this.onSwiped(RIGHT)}
-            >
-                <h2 className="m-5">
-                    {typeOfCoffee.substring(0, 1).toUpperCase()}
-                    {typeOfCoffee.substring(1)} coffee within ${price} near {location}
-                </h2>
-                <div
-                    className="d-flex"
-                    style={{ maxWidth: "100%", position: "abosulte" }}
-                >
-                    <button onClick={() => this.onSwiped(RIGHT)} style={buttonLeft}>
-                        ⇦
-          </button>
-                    <Slides
-                        price={currentPlace.price}
-                        coffee={currentPlace.coffee}
-                        name={currentPlace.name}
-                        address={currentPlace.location.address}
-                        img={currentPlace.img}
-                    />
-                    <button onClick={() => this.onSwiped(LEFT)} style={buttonRight}>
-                        ⇨
-          </button>
+            <div>
+
+                <div className='d-flex flex-column align-items-center '>
+                    <div className="container-fluid dashHero ">
+                        <div className="jumbotron" style={{ marginTop: "-5px" }}>
+                            <img className="logout" src={require("../assets/logout.svg")} onClick={this.logout} />
+                            <br />
+                            <Link to="/preferences">preferences</Link>
+                            <h3>
+                                <i className="fas fa-mug-hot"></i> Local Roasters
+                        </h3>
+                        </div>
+                    </div>
                 </div>
-            </Swipeable>
+                <Swipeable
+                    trackMouse
+                    preventDefaultTouchmoveEvent
+                    onSwipedLeft={() => this.onSwiped(LEFT)}
+                    onSwipedRight={() => this.onSwiped(RIGHT)}
+                >
+
+                    <div
+                        className="d-flex card"
+                        style={{ maxWidth: "100%", position: "abosulte" }}
+                    >
+                        <button onClick={() => this.onSwiped(RIGHT)} className="buttonStyle" style={buttonLeft}>
+                            ⇦
+                        </button>
+                        <Slides
+                            price={currentPlace.price}
+                            coffee={currentPlace.coffee}
+                            name={currentPlace.name}
+                            address={currentPlace.location.address}
+                            img={currentPlace.img}
+                            beans={currentPlace.beans}
+                        />
+                        <button onClick={() => this.onSwiped(LEFT)} className="buttonStyle" style={buttonRight}>
+                            ⇨
+          </button>
+                    </div>
+                </Swipeable>
+            </div >
         );
     }
 }

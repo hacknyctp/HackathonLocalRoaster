@@ -11,3 +11,40 @@
     width: 8%;
     float: left;
 }
+
+.card {
+    display: flex;
+    flex-direction: row;
+}
+
+.buttonStyle {
+    color: #eeeeee;
+    font-size: 2em;
+    background-color: #7e583f;
+    border: 0;
+    cursor: pointer;
+    position: relative;
+    top: 70;
+    display: none;
+}
+
+.jumbotron {
+    margin-bottom: 0;
+}
+
+@media only screen and (min-width: 900px) {
+    .card {
+        padding: 0 20%;
+    }
+    .buttonStyle {
+        font-size: 2em;
+        border: 0;
+        cursor: pointer;
+        position: relative;
+        top: 70;
+        display: block;
+    }
+    .logout {
+        width: 2% !important;
+    }
+}
