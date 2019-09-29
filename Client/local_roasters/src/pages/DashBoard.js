@@ -96,7 +96,7 @@ export default class DashBoard extends Component {
                 onSwipedLeft={() => this.onSwiped(LEFT)}
                 onSwipedRight={() => this.onSwiped(RIGHT)}
             >
-                <h2>{typeOfCoffee} coffee in {location} with in ${price}</h2>
+                <h2 className="m-5">{typeOfCoffee} coffee in {location} with prices up to ${price}</h2>
                 <div className="d-flex" style={{ maxWidth: "100%", position: "abosulte" }}>
 
                     <button onClick={() => this.onSwiped(RIGHT)} style={buttonLeft}>
