@@ -42,7 +42,10 @@ const Slides = ({ price, coffee, name, img, address, beans }) => {
 
             </div>
             <br />
-            <a className="btn btn-success" href={`https://www.google.com/maps/place/${address}`}> Take me </a>
+            <div className="card-bottom">
+                <a className="btn btn-success" target="_blank" href={`https://www.google.com/maps/place/${address}`}> Take me here </a>
+                <p>{address}</p>
+            </div>
         </div >
     )
 }
