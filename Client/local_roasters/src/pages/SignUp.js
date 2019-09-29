@@ -7,10 +7,10 @@ export default class Signup extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            location: '10033',
-            email: 'sparky@gmail.com',
-            password: 'abc123',
-            retype: 'abc123'
+            location: '',
+            email: '',
+            password: '',
+            retype: ''
         };
     }
 
@@ -19,8 +19,6 @@ export default class Signup extends Component {
         this.setState({ [e.target.id]: e.target.value });
     };
     submitHandler = () => {
-        sessionStorage.setItem('price', 4);
-        sessionStorage.setItem('coffee', 'black');
         //this sends the information to the sign up api
         const { location, email, password, retype } = this.state;
 

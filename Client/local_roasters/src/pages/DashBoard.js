@@ -11,15 +11,19 @@ const IMG_HEIGHT = "249px";
 
 
 const buttonStyles = {
-    height: IMG_HEIGHT,
+    height: "10%",
     color: "#eeeeee",
     fontSize: "2em",
     backgroundColor: "rgba(230,230,230,.2)",
     border: "0",
-    cursor: "pointer"
+    borderRadius: "50%",
+    cursor: "pointer",
+    position: "relative",
+    top: 70,
+    display: "none"
 };
 
-const buttonLeft = { ...buttonStyles, float: "left" };
+const buttonLeft = { ...buttonStyles, float: "left", };
 const buttonRight = { ...buttonStyles, float: "right" };
 
 
@@ -93,7 +97,7 @@ export default class DashBoard extends Component {
                 onSwipedRight={() => this.onSwiped(RIGHT)}
             >
                 <h2>{typeOfCoffee} coffee in {location} with in ${price}</h2>
-                <div className="d-flex" style={{ minWidth: "100%" }}>
+                <div className="d-flex" style={{ maxWidth: "100%", position: "abosulte" }}>
 
                     <button onClick={() => this.onSwiped(RIGHT)} style={buttonLeft}>
                         ⇦
