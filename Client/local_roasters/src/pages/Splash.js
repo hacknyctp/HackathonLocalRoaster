@@ -56,7 +56,7 @@ const Splash = () => {
         </div>
       </div>
       <br />
-      <div>
+      <div className='btn btn-success'>
         <Link className='links' to='/price'>
           Let's caffeinate
         </Link>
