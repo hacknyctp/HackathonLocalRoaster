@@ -73,7 +73,7 @@ router.get("/getRoasters", async (req, res) => {
       }
     
       // const roasters = await Roaster.find(location); 
-      console.log(roasters)
+      // console.log(roasters)
       res.json(roasters);
     } catch (err) {
       console.error(err.message);
