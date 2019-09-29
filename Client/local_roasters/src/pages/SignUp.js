@@ -19,10 +19,7 @@ export default class Signup extends Component {
     this.setState({ [e.target.id]: e.target.value });
   };
 
-<<<<<<< HEAD
   submitHandler = () => {
-    sessionStorage.setItem('price', 4);
-    sessionStorage.setItem('coffee', 'black');
     //this sends the information to the sign up api
     const { location, email, password, retype } = this.state;
 
@@ -65,22 +62,6 @@ export default class Signup extends Component {
               required
             />
           </div>
-=======
-        if (password === retype) {
-            axios.post("https://local-roasters-api.herokuapp.com/users/signup", {
-                email: email,
-                password: password,
-                location: location,
-                coffee: sessionStorage.getItem('coffee'),
-                price: sessionStorage.getItem('price'),
-            })
-                .then(res => localStorage.setItem('token', res.data.token))
-                .then(() => this.props.history.push("/dashboard"))
-                .catch(error => console.log(error))
-        } else {
-            alert("The passwords do not match");
-        }
->>>>>>> 0423ad1aa5b70a2a87e7ac736e981b9efede9659
 
           <div className='form-group'>
             <input
