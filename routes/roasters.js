@@ -49,7 +49,7 @@ router.post("/addRoaster", async (req, res) => {
 }); //Note that "/" here refers to the prefix of "api/users" + "/"
 
 //Get roasters via location.
-router.get("/getRoasters", auth, async (req, res) => {
+router.get("/getRoasters", async (req, res) => {
   try {
     console.log(req.query);
     const { zipcode } = req.query; //De-structure the request's data//
