@@ -18,6 +18,10 @@
   color: white;
 }
 
+.container-fluid {
+  padding: 0;
+}
+
 .App-link {
   color: #09d3ac;
 }
@@ -29,7 +33,7 @@ body {
 }
 
 .btn-group-price {
-  margin: 0.3rem 0.3rem;
+  margin: 0.4rem 0.4rem;
 }
 
 .btn-group-item {
