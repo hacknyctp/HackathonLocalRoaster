@@ -1,14 +1,13 @@
 import React, { Component } from "react";
-import Slides from "../components/Slides"
+import Slides from "../components/Slides";
 import { Swipeable } from "react-swipeable";
-import axios from 'axios';
+import axios from "axios";
 import "../styles/DashBoard.css";
 
 const RIGHT = "-1";
 const LEFT = "+1";
 const IMG_WIDTH = "342px";
 const IMG_HEIGHT = "249px";
-
 
 const buttonStyles = {
     height: "10%",
@@ -23,12 +22,10 @@ const buttonStyles = {
     display: "none"
 };
 
-const buttonLeft = { ...buttonStyles, float: "left", };
+const buttonLeft = { ...buttonStyles, float: "left" };
 const buttonRight = { ...buttonStyles, float: "right" };
 
-
 export default class DashBoard extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -37,7 +34,7 @@ export default class DashBoard extends Component {
             price: "",
             recomendations: [{ location: "" }],
             slideIndex: 0
-        }
+        };
     }
     //this changes slide index
     onSwiped(direction) {
@@ -45,89 +42,94 @@ export default class DashBoard extends Component {
         const change = direction === RIGHT ? RIGHT : LEFT;
         const adjustedIdx = this.state.slideIndex + Number(change);
         let newIdx;
-        if (adjustedIdx >= recomendations.length) { //after last slide go to first
+        if (adjustedIdx >= recomendations.length) {
+            //after last slide go to first
             newIdx = 0;
-        } else if (adjustedIdx < 0) { //if swipe left on first go to last
+        } else if (adjustedIdx < 0) {
+            //if swipe left on first go to last
             newIdx = recomendations.length - 1;
-        } else { //else go to next slide back or forth
+        } else {
+            //else go to next slide back or forth
             newIdx = adjustedIdx;
         }
         this.setState({ slideIndex: newIdx });
     }
 
-
     //this is going to get the user data from the database
     componentDidMount() {
-        console.log(localStorage.getItem("token"))
+        console.log(localStorage.getItem("token"));
         axios("https://local-roasters-api.herokuapp.com/users", {
-            headers: { 'x-auth-token': localStorage.getItem("token") },
+            headers: { "x-auth-token": localStorage.getItem("token") }
         })
             // .then(res => console.log(res))
-            .then((res) => this.setState({
-                typeOfCoffee: res.data.coffee,
-                price: res.data.price,
-                location: res.data.location,
-                price: res.data.price
-            }))
+            .then(res =>
+                this.setState({
+                    typeOfCoffee: res.data.coffee,
+                    price: res.data.price,
+                    location: res.data.location,
+                    price: res.data.price
+                })
+            )
+            .catch(error => {
+                console.log(error.message);
+            })
             .then(() => {
                 //second api call to get the locations
                 axios("https://local-roasters-api.herokuapp.com/roasters/getRoasters", {
+                    headers: { "x-auth-token": localStorage.getItem("token") },
                     params: {
                         zipcode: 11214
-                    },
-                    headers: { 'x-auth-token': localStorage.getItem("token") }
+                    }
                 })
                     .then(res => this.setState({ recomendations: [...res.data] }))
-                    .catch(err => console.log("error " + err))
+                    .catch(err => {
+                        console.log("error " + err);
+                        window.location.replace("/");
+                    });
             })
-            .catch((error) => alert("Something went wrong with getting your data..."));
-
-
+            .catch(error => {
+                error.error(error.message);
+            });
     }
-
-    logout = () => {
-        localStorage.clear();
-        this.props.history.push("/login");
-    }
-
 
     render() {
-        const { typeOfCoffee, location, price, recomendations, slideIndex } = this.state;
+        const {
+      typeOfCoffee,
+            location,
+            price,
+            recomendations,
+            slideIndex
+    } = this.state;
         const currentPlace = recomendations[slideIndex];
         return (
-            <div>
-                <div className="jumbotron">
-                    <img className="logout" src={require("../assets/logout.svg")} onClick={this.logout} />
-                    <br />
-                    <h3><i className="fas fa-mug-hot"></i> Local Roasters</h3>
-                </div>
-                <Swipeable
-                    trackMouse
-                    preventDefaultTouchmoveEvent
-                    onSwipedLeft={() => this.onSwiped(LEFT)}
-                    onSwipedRight={() => this.onSwiped(RIGHT)}
+            <Swipeable
+                trackMouse
+                preventDefaultTouchmoveEvent
+                onSwipedLeft={() => this.onSwiped(LEFT)}
+                onSwipedRight={() => this.onSwiped(RIGHT)}
+            >
+                <h2 className="m-5">
+                    {typeOfCoffee} coffee in {location} with prices up to ${price}
+                </h2>
+                <div
+                    className="d-flex"
+                    style={{ maxWidth: "100%", position: "abosulte" }}
                 >
-                    <h2 className="m-1">{typeOfCoffee} coffee in {location} with prices up to ${price}</h2>
-                    <div className="d-flex" style={{ maxWidth: "100%", position: "abosulte" }}>
-
-                        <button onClick={() => this.onSwiped(RIGHT)} style={buttonLeft}>
-                            ⇦
-                    </button>
-                        <Slides
-                            price={currentPlace.price}
-                            coffee={currentPlace.coffee}
-                            name={currentPlace.name}
-                            address={currentPlace.location.address}
-                            img={currentPlace.img}
-                        />
-                        <button onClick={() => this.onSwiped(LEFT)} style={buttonRight}>
-                            ⇨
-                    </button>
-                    </div>
-
-                </Swipeable >
-            </div>
-
-        )
+                    <button onClick={() => this.onSwiped(RIGHT)} style={buttonLeft}>
+                        ⇦
+          </button>
+                    <Slides
+                        price={currentPlace.price}
+                        coffee={currentPlace.coffee}
+                        name={currentPlace.name}
+                        address={currentPlace.location.address}
+                        img={currentPlace.img}
+                    />
+                    <button onClick={() => this.onSwiped(LEFT)} style={buttonRight}>
+                        ⇨
+          </button>
+                </div>
+            </Swipeable>
+        );
     }
 }

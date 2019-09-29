@@ -67,7 +67,7 @@ export default class Signup extends Component {
                             id="location"
                             type="numeric"
                             value={this.state.location}
-                            placeholder="zip code"
+                            placeholder="Zip Code ie 11216"
                             onChange={event => this.formHandler(event)}
                             required
                         />
@@ -79,7 +79,7 @@ export default class Signup extends Component {
                             id="email"
                             type="text"
                             value={this.state.email}
-                            placeholder="email"
+                            placeholder="Email"
                             onChange={event => this.formHandler(event)}
                             required
                         />
@@ -114,7 +114,12 @@ export default class Signup extends Component {
                             onClick={this.submitHandler}
                         />
                     </div>
-                    <button className="btn btn-secondary" onClick={() => this.props.history.push("/login")}> Log in </button>
+                    <button
+                        className="btn btn-secondary"
+                        onClick={() => this.props.history.push("/login")}
+                    >
+                        Login
+          </button>
                 </div>
             </div>
         );
