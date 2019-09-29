@@ -98,7 +98,7 @@ export default class DashBoard extends Component {
             <div>
 
                 <div className='d-flex flex-column align-items-center '>
-                    <div className="container-fluid">
+                    <div className="container-fluid dashHero ">
                         <div className="jumbotron" style={{ marginTop: "-5px" }}>
                             <img className="logout" src={require("../assets/logout.svg")} onClick={this.logout} />
                             <br />
