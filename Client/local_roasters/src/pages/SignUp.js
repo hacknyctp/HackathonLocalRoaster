@@ -58,7 +58,7 @@ export default class Signup extends Component {
             <i className="fas fa-mug-hot"></i> Local Roasters
           </h3>
           <hr class="my-3"></hr>
-          <p>Where are you getting your Coffee ? </p>
+          <p>Just three more things to get your coffee started... </p>
         </div>
 
         <div className="signUp align-items-center">
@@ -68,7 +68,7 @@ export default class Signup extends Component {
               id="location"
               type="numeric"
               value={this.state.location}
-              placeholder="zip code"
+              placeholder="Zip Code ie 11214"
               onChange={event => this.formHandler(event)}
               required
             />
@@ -80,7 +80,7 @@ export default class Signup extends Component {
               id="email"
               type="text"
               value={this.state.email}
-              placeholder="email"
+              placeholder="Email@example.com"
               onChange={event => this.formHandler(event)}
               required
             />
