@@ -119,7 +119,8 @@ export default class Signup extends Component {
             />
           </div>
           <Link style={{ color: "white" }} className="links" to="/login">
-            <span className="links-small">Already Sign Up? |</span> Log In
+            <span className="links-small mt-1 mb-0">Already Sign Up? |</span>{" "}
+            Log In
           </Link>
         </div>
       </div>
