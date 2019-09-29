@@ -1,4 +1,6 @@
 .backgroundImg {
     background: url("../assets/beans.jpeg");
     height: 100%;
+    padding: 10%;
+    padding-top: 5%;
 }

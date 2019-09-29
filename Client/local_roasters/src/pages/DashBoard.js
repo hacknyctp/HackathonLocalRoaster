@@ -106,6 +106,7 @@ export default class DashBoard extends Component {
                         price={currentPlace.price}
                         coffee={currentPlace.coffee}
                         name={currentPlace.name}
+                        address={currentPlace.location.address}
                         img={currentPlace.img}
                     />
                     <button onClick={() => this.onSwiped(LEFT)} style={buttonRight}>

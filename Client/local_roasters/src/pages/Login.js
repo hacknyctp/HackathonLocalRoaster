@@ -35,8 +35,8 @@ export default class Login extends Component {
         return (
             <div className='d-flex flex-column align-items-center backgroundImg'>
                 <h1 style={{ color: "white", paddingTop: "10%" }}>Local Roasters</h1>
-                <input className="mt-5 form-control" type="text" value={email} id="email" placeholder="email" onChange={(e) => this.textHandler(e)} style={{ width: "60%" }} required />
-                <input className="m-2 form-control" type="password" value={password} id="password" placeholder="password" onChange={(e) => this.textHandler(e)} style={{ width: "60%" }} required />
+                <input className="mt-5 form-control" type="text" value={email} id="email" placeholder="email" onChange={(e) => this.textHandler(e)} required />
+                <input className="m-2 form-control" type="password" value={password} id="password" placeholder="password" onChange={(e) => this.textHandler(e)} required />
                 <input className="m-2 btn btn-success" type="submit" value="submit" onClick={this.submit} />
             </div>
         )
