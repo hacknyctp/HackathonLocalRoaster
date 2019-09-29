@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-const Splash = () => {
+const Splash = props => {
   const [coffee, setCoffeeType] = useState('');
   const onChange = e => {
     //setPrice(e.target.value);
@@ -13,6 +13,15 @@ const Splash = () => {
     e.target.className = 'btn btn-lg btn-success coffee-items';
 
     sessionStorage.setItem(e.target.name, e.target.value);
+    setCoffeeType(e.target.value);
+  };
+
+  const onClickLink = e => {
+    if (coffee === '') {
+      alert('Pick a Coffee Type !!');
+    } else {
+      props.history.push('/price');
+    }
   };
 
   return (
@@ -56,10 +65,13 @@ const Splash = () => {
         </div>
       </div>
       <br />
-      <div className='btn btn-success'>
+      {/* <div className='btn btn-success'>
         <Link className='links' to='/price'>
           Let's caffeinate
         </Link>
+      </div> */}
+      <div className='btn btn-success' onClick={onClickLink}>
+        Let's caffeinate
       </div>
       <br />
       <div>
