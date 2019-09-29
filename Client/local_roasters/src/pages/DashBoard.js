@@ -9,21 +9,9 @@ const LEFT = "+1";
 const IMG_WIDTH = "342px";
 const IMG_HEIGHT = "249px";
 
-const buttonStyles = {
-    height: "10%",
-    color: "#eeeeee",
-    fontSize: "2em",
-    backgroundColor: "rgba(230,230,230,.2)",
-    border: "0",
-    borderRadius: "50%",
-    cursor: "pointer",
-    position: "relative",
-    top: 70,
-    display: "none"
-};
 
-const buttonLeft = { ...buttonStyles, float: "left" };
-const buttonRight = { ...buttonStyles, float: "right" };
+const buttonLeft = { float: "left" };
+const buttonRight = { float: "right" };
 
 export default class DashBoard extends Component {
     constructor(props) {
@@ -108,8 +96,18 @@ export default class DashBoard extends Component {
         const currentPlace = recomendations[slideIndex];
         return (
             <div>
-                <img className="logout" src={require("../assets/logout.svg")} onClick={this.logout} />
-                <br />
+
+                <div className='d-flex flex-column align-items-center '>
+                    <div className="container-fluid">
+                        <div className="jumbotron" style={{ marginTop: "-5px" }}>
+                            <img className="logout" src={require("../assets/logout.svg")} onClick={this.logout} />
+                            <br />
+                            <h3>
+                                <i className="fas fa-mug-hot"></i> Local Roasters
+                        </h3>
+                        </div>
+                    </div>
+                </div>
                 <Swipeable
                     trackMouse
                     preventDefaultTouchmoveEvent
