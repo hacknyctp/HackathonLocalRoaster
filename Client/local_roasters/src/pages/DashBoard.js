@@ -30,7 +30,7 @@ export default class DashBoard extends Component {
             typeOfCoffee: "",
             location: "",
             price: "",
-            recomendations: [],
+            recomendations: [{ location: "" }],
             slideIndex: 0
         }
     }
@@ -53,21 +53,25 @@ export default class DashBoard extends Component {
 
     //this is going to get the user data from the database
     componentDidMount() {
-        axios("https://local-roasters-api.herokuapp.com/users", { headers: { 'x-auth-token': localStorage.getItem("token") } })
+        console.log(localStorage.getItem("token"))
+        axios("https://local-roasters-api.herokuapp.com/users", {
+            headers: { 'x-auth-token': localStorage.getItem("token") },
+        })
+            // .then(res => console.log(res))
             .then((res) => this.setState({
-                typeOfCoffee: res.coffee,
-                price: res.price,
-                location: res.location, price: res.price,
-                recomendations: res.recomendations
+                typeOfCoffee: res.data.coffee,
+                price: res.data.price,
+                location: res.data.location,
+                price: res.data.price
+                // recomendations: res.recomendations
             }))
-            .then(() => console.log(this.state))
             .catch((error) => alert("Something went wrong with getting your data..."));
     }
 
 
     render() {
         const { typeOfCoffee, location, price, recomendations, slideIndex } = this.state;
-        const currentPlace = recomendations[slideIndex];
+        // const currentPlace = recomendations[slideIndex];
         return (
 
             <Swipeable
@@ -83,9 +87,9 @@ export default class DashBoard extends Component {
                         ⇦
                     </button>
                     <Slides
-                    // location={currentPlace.location}
-                    // price={currentPlace.price}
-                    // coffee={currentPlace.coffee}
+                        location={location}
+                        price={price}
+                        coffee={typeOfCoffee}
                     />
                     <button onClick={() => this.onSwiped(LEFT)} style={buttonRight}>
                         ⇨
