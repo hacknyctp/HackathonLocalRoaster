@@ -21,7 +21,7 @@ const Splash = () => {
         <h3>
           <i className="fas fa-mug-hot"></i> Local Rosters
         </h3>
-        <hr class="my-3"></hr>
+        <hr className="my-3"></hr>
         <p> Your location-based, personalized coffee experience</p>
       </div>
       What Roast of Coffee do You Like?
