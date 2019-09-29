@@ -29,7 +29,7 @@
 }
 
 .jumbotron {
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
 }
 
 @media only screen and (min-width: 900px) {
