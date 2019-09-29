@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import "../styles/Login.css"
 import axios from 'axios';
 import { Link } from "react-router-dom";
 
@@ -32,11 +33,11 @@ export default class Login extends Component {
     render() {
         const { email, password } = this.state;
         return (
-            <div>
-                <h1>Local Roasters</h1>
-                <input type="text" value={email} id="email" placeholder="email" onChange={(e) => this.textHandler(e)} required />
-                <input type="password" value={password} id="password" placeholder="password" onChange={(e) => this.textHandler(e)} required />
-                <input type="submit" value="submit" onClick={this.submit} />
+            <div className='d-flex flex-column align-items-center backgroundImg'>
+                <h1 style={{ color: "white", paddingTop: "10%" }}>Local Roasters</h1>
+                <input className="mt-5 form-control" type="text" value={email} id="email" placeholder="email" onChange={(e) => this.textHandler(e)} style={{ width: "60%" }} required />
+                <input className="m-2 form-control" type="password" value={password} id="password" placeholder="password" onChange={(e) => this.textHandler(e)} style={{ width: "60%" }} required />
+                <input className="m-2 btn btn-success" type="submit" value="submit" onClick={this.submit} />
             </div>
         )
     }

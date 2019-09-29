@@ -18,6 +18,7 @@ const buttonStyles = {
     border: "0",
     cursor: "pointer"
 };
+
 const buttonLeft = { ...buttonStyles, float: "left" };
 const buttonRight = { ...buttonStyles, float: "right" };
 
@@ -91,16 +92,17 @@ export default class DashBoard extends Component {
                 onSwipedLeft={() => this.onSwiped(LEFT)}
                 onSwipedRight={() => this.onSwiped(RIGHT)}
             >
-                <div>
-                    <h2>{typeOfCoffee} coffee in {location} with in ${price}</h2>
+                <h2>{typeOfCoffee} coffee in {location} with in ${price}</h2>
+                <div className="d-flex" style={{ minWidth: "100%" }}>
+
                     <button onClick={() => this.onSwiped(RIGHT)} style={buttonLeft}>
                         ⇦
                     </button>
                     <Slides
-                        location={location}
                         price={currentPlace.price}
                         coffee={currentPlace.coffee}
                         name={currentPlace.name}
+                        img={currentPlace.img}
                     />
                     <button onClick={() => this.onSwiped(LEFT)} style={buttonRight}>
                         ⇨
