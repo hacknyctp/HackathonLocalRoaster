@@ -17,7 +17,10 @@ const Price = () => {
   return (
     <div className='container-fluid'>
       <div className='jumbotron'>
-        <h3>Local Rosters</h3>
+        <h3>
+          <i className='fas fa-mug-hot'></i> Local Rosters
+        </h3>
+        <hr class='my-3'></hr>
         <p>We care about your coffee and maximum price...</p>
       </div>
       What is the most you'll pay for a cup of coffee ..?
