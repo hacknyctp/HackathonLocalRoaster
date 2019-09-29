@@ -60,12 +60,19 @@ router.post(
 router.get("/getRoasters", async (req, res) => {
     try {
       // console.log(req.body);
-      const { location, price } = req.body; //De-structure the request's data// console.log(id.user);
-      console.log(location);
-      if(location){
-        
+      const { zipcode } = req.body; //De-structure the request's data// console.log(id.user);
+      // console.log(location);
+  
+      let roasters = await Roaster.findOne({
+          "location.zipcode": zipcode})
+      
+    if(!zipcode){
+        return res.status(400).json({
+          msg: "Did not send a zipcode!"
+        }); 
       }
-      const roasters = await Roaster.find(location); 
+    
+      // const roasters = await Roaster.find(location); 
       console.log(roasters)
       res.json(roasters);
     } catch (err) {
