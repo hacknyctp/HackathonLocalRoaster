@@ -10,7 +10,7 @@ export default class Login extends Component {
         this.state = {
             email: "",
             password: "",
-            success: false
+            success: falsegi
         }
     }
 
