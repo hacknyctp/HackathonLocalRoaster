@@ -92,6 +92,11 @@ export default class DashBoard extends Component {
             });
     }
 
+    logout = () => {
+        localStorage.clear();
+        this.props.history.push("/");
+    }
+
     render() {
         const {
       typeOfCoffee,
@@ -99,39 +104,43 @@ export default class DashBoard extends Component {
             price,
             recomendations,
             slideIndex
-    } = this.state;
+            } = this.state;
         const currentPlace = recomendations[slideIndex];
         return (
-            <Swipeable
-                trackMouse
-                preventDefaultTouchmoveEvent
-                onSwipedLeft={() => this.onSwiped(LEFT)}
-                onSwipedRight={() => this.onSwiped(RIGHT)}
-            >
-                <h2 className="m-5">
-                    {typeOfCoffee.substring(0, 1).toUpperCase()}
-                    {typeOfCoffee.substring(1)} coffee within ${price} near {location}
-                </h2>
-                <div
-                    className="d-flex"
-                    style={{ maxWidth: "100%", position: "abosulte" }}
+            <div>
+                <img className="logout" src={require("../assets/logout.svg")} onClick={this.logout} />
+                <br />
+                <Swipeable
+                    trackMouse
+                    preventDefaultTouchmoveEvent
+                    onSwipedLeft={() => this.onSwiped(LEFT)}
+                    onSwipedRight={() => this.onSwiped(RIGHT)}
                 >
-                    <button onClick={() => this.onSwiped(RIGHT)} style={buttonLeft}>
-                        ⇦
+                    <h2 className="m-5">
+                        {typeOfCoffee.substring(0, 1).toUpperCase()}
+                        {typeOfCoffee.substring(1)} coffee within ${price} near {location}
+                    </h2>
+                    <div
+                        className="d-flex card"
+                        style={{ maxWidth: "100%", position: "abosulte" }}
+                    >
+                        <button onClick={() => this.onSwiped(RIGHT)} className="buttonStyle" style={buttonLeft}>
+                            ⇦
           </button>
-                    <Slides
-                        price={currentPlace.price}
-                        coffee={currentPlace.coffee}
-                        name={currentPlace.name}
-                        address={currentPlace.location.address}
-                        img={currentPlace.img}
-                        beans={currentPlace.beans}
-                    />
-                    <button onClick={() => this.onSwiped(LEFT)} style={buttonRight}>
-                        ⇨
+                        <Slides
+                            price={currentPlace.price}
+                            coffee={currentPlace.coffee}
+                            name={currentPlace.name}
+                            address={currentPlace.location.address}
+                            img={currentPlace.img}
+                            beans={currentPlace.beans}
+                        />
+                        <button onClick={() => this.onSwiped(LEFT)} className="buttonStyle" style={buttonRight}>
+                            ⇨
           </button>
-                </div>
-            </Swipeable>
+                    </div>
+                </Swipeable>
+            </div>
         );
     }
 }

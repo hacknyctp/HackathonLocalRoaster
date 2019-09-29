@@ -108,20 +108,17 @@ export default class Signup extends Component {
                     </div>
                     <div className="form-group">
                         <input
-                            className="btn btn-lg btn-primary"
+                            className="btn btn-lg btn-success"
                             type="submit"
                             value="Continue"
                             onClick={this.submitHandler}
                         />
                     </div>
-                    <button
-                        className="btn btn-secondary"
-                        onClick={() => this.props.history.push("/login")}
-                    >
-                        Login
-          </button>
+                    <Link style={{ color: "white" }} className='links' to='/login'>
+                        <span className='links-small'>Already Sign Up? |</span> Log In
+                  </Link>
                 </div>
-            </div>
+            </div >
         );
     }
 }

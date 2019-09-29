@@ -18,12 +18,7 @@
   color: white;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   font-family: 'Acme', sans-serif;
 }
 
@@ -34,12 +29,14 @@ h6 {
 .App-link {
   color: #09d3ac;
 }
+
 body {
   font-family: 'Acme', sans-serif;
   color: #7e583f;
 }
 
 /* Splash  */
+
 .container-fluid {
   padding-left: 0px;
 }
@@ -58,5 +55,5 @@ body {
 }
 
 .links-small {
-  font-size: 0.8rem;
+  font-size: 1rem;
 }

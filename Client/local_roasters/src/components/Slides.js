@@ -6,7 +6,6 @@ const Slides = ({ price, coffee, name, img, address, beans }) => {
     for (let i = 0; i < 4; i++) {
 
     }
-    const filled = false;
 
     return (
         <div className="e-flex align-items-center justify-content border m-3 p-3" style={{ width: "100%" }}>
