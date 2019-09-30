@@ -1,0 +1,67 @@
+.App {
+  text-align: center;
+  height: 100%;
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Acme", sans-serif;
+}
+
+.container-fluid {
+  padding: 0;
+}
+
+.jumbotron {
+  margin-bottom: 10px;
+}
+.App-link {
+  color: #09d3ac;
+}
+
+body {
+  font-family: "Acme", sans-serif;
+  color: #7e583f;
+}
+
+/* Splash  */
+
+.container-fluid {
+  padding-left: 0px;
+}
+
+.btn-group-price {
+  margin: 0.4rem 0.4rem;
+}
+
+.btn-group-item {
+  margin: 0.3rem 0.3rem;
+}
+
+.links {
+  font-size: 1.2rem;
+  color: #7e583f;
+}
+
+.links-small {
+  font-size: 1rem;
+}

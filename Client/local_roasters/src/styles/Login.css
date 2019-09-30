@@ -1,0 +1,15 @@
+.backgroundImg {
+    background: url("../assets/beans.jpeg");
+    height: 100%;
+}
+
+.inputs {
+    width: 100%;
+    padding: 0 10%;
+}
+
+@media only screen and (min-width: 900px) {
+    .inputs {
+        padding: 0 40%;
+    }
+}
