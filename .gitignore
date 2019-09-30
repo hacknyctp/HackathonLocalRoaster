@@ -1,5 +1,11 @@
 # Node Modules
 node_modules
 ./node_modules
+
 .notes
 # ENV Stuff
+
+
+# ENV Stuff
+.env
+env
